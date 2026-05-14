@@ -8,7 +8,7 @@ from anomaly_detector import detect_anomalies
 from recommender import generate_recommendations
 from report_generator import generate_report
 from stockage_result import save_result
-
+from pathlib import Path
 
 st.set_page_config(
     page_title="Infra Monitoring",
@@ -16,8 +16,13 @@ st.set_page_config(
 )
 
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DATA_FILE = BASE_DIR / "data" / "simulated_metrics.json"
+
+
 def load_data():
-    with open("data/simulated_metrics.json", "r", encoding="utf-8") as file:
+    with open(DATA_FILE, "r", encoding="utf-8") as file:
         return json.load(file)
 
 
@@ -35,11 +40,11 @@ def process_metric(raw_metric):
     return metrics, report
 
 
-st.title("Dashboard de Monitoring Infrastructure")
-st.caption("Simulation temps réel à partir de données JSON")
+st.title("Dashboard")
+st.caption("Simulation en temps réel à partir de données JSON")
 
 st.markdown("""
-### Vue temps réel simulée
+### Vue en temps réel simulée
 Ce tableau de bord lit automatiquement le dataset JSON, injecte les mesures une par une,
 détecte les anomalies, affiche les alertes,sauvegarde chaque rapport généré et propose des recommendations.
 """)
