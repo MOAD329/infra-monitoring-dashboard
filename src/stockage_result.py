@@ -18,3 +18,4 @@ def save_result(report):
 
     with open(RESULTS_FILE, "w", encoding="utf-8") as file:
         json.dump(history, file, indent=4, ensure_ascii=False)
+        
