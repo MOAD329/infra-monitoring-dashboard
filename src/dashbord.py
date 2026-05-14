@@ -17,7 +17,7 @@ st.set_page_config(
 
 
 def load_data():
-    with open("../data/simulated_metrics.json", "r", encoding="utf-8") as file:
+    with open("data/simulated_metrics.json", "r", encoding="utf-8") as file:
         return json.load(file)
 
 
